@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P2Cash - Turn Plastic into Value</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Login Screen -->
+<section id="loginScreen" class="screen active">
+  <div class="login-wrap">
+    <div class="brand-logo">
+      <div class="logo-circle">P2</div>
+      <h1>P2Cash</h1>
+      <p>Turn Plastic into Value</p>
+    </div>
+
+    <div class="login-card">
+      <h2>Welcome Back</h2>
+      <p>Login with your mobile number</p>
+
+      <div class="input-group">
+        <label>Mobile Number</label>
+        <input type="tel" id="mobileNumber" placeholder="01XXXXXXXXX" />
+      </div>
+
+      <div class="input-group">
+        <label>Region Code</label>
+        <input type="text" id="regionCode" placeholder="e.g. 1024" />
+      </div>
+
+      <button class="primary-btn" onclick="loginUser()">Login to P2Cash</button>
+    </div>
+  </div>
+</section>
+
+<!-- Main App -->
+<section id="appScreen" class="screen hidden">
+  <!-- Header -->
+  <header class="top-header">
+    <div>
+      <h2>Hello, <span id="userName">User</span> 👋</h2>
+      <p>Region: <span id="showRegion">0000</span></p>
+    </div>
+    <div class="profile-badge">P2</div>
+  </header>
+
+  <!-- Balance Card -->
+  <section class="balance-card">
+    <div class="balance-top">
+      <span>Eco Point Wallet</span>
+      <span class="status-pill">Active</span>
+    </div>
+
+    <div class="balance-main">
+      <h1><span id="ecoPoints">0</span> <small>EP</small></h1>
+      <p>Approx Reward Value: ৳<span id="rewardValue">0.00</span></p>
+    </div>
+
+    <div class="card-info">
+      <div>
+        <span>Total Plastic</span>
+        <strong><span id="totalPlastic">0</span> g</strong>
+      </div>
+      <div>
+        <span>Last Agent</span>
+        <strong id="agentNameDisplay">N/A</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Actions -->
+  <section class="quick-actions">
+    <button class="action-card" onclick="showSection('redeemSection')">💸 Send Points</button>
+    <button class="action-card" onclick="showSection('shopSection')">🏪 Nearby Shops</button>
+    <button class="action-card" onclick="showSection('historySection')">📜 History</button>
+  </section>
+
+  <!-- Redeem Section -->
+  <section id="redeemSection" class="content-card hidden">
+    <div class="section-head">
+      <h3>Send Eco Points</h3>
+      <span>Send points to authorized agent via mobile number</span>
+    </div>
+
+    <div class="input-group">
+      <label>Enter Eco Points to Send</label>
+      <input type="number" id="redeemPoints" placeholder="Minimum 100 EP" />
+    </div>
+
+    <div class="input-group">
+      <label>Authorized Agent Mobile Number</label>
+      <input type="tel" id="redeemAgentNumber" placeholder="01XXXXXXXXX" />
+    </div>
+
+    <div class="calc-box">
+      <p>Send Value: <strong>৳<span id="redeemValue">0.00</span></strong></p>
+    </div>
+
+    <button class="primary-btn" onclick="redeemEcoPoints()">Send Points</button>
+  </section>
+
+  <!-- Nearby Shops Section -->
+  <section id="shopSection" class="content-card hidden">
+    <div class="section-head">
+      <h3>Nearby Collection Partners</h3>
+      <span>Hover on agent name to see location</span>
+    </div>
+
+    <div class="shop-list">
+      <div class="shop-item" data-location="Dhaka, Bangladesh">
+        <h4 title="Dhaka, Bangladesh">Rahim Store - A102</h4>
+        <p>Region: 1024 | Verified</p>
+      </div>
+      <div class="shop-item" data-location="Dhaka, Bangladesh">
+        <h4 title="Dhaka, Bangladesh">Bismillah Mart - A204</h4>
+        <p>Region: 1024 | Verified</p>
+      </div>
+      <div class="shop-item" data-location="Gazipur, Bangladesh">
+        <h4 title="Gazipur, Bangladesh">Green Point Shop - A331</h4>
+        <p>Region: 1025 | Verified</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- History Section -->
+  <section id="historySection" class="content-card hidden">
+    <div class="section-head">
+      <h3>Transaction History</h3>
+      <span>Recent eco activity</span>
+    </div>
+    <div id="historyList" class="history-list"></div>
+  </section>
+
+  <!-- Bottom Nav -->
+  <nav class="bottom-nav">
+    <button class="nav-btn active" onclick="showSection('redeemSection', this)">Send Points</button>
+    <button class="nav-btn" onclick="showSection('shopSection', this)">Shops</button>
+    <button class="nav-btn" onclick="showSection('historySection', this)">History</button>
+  </nav>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
